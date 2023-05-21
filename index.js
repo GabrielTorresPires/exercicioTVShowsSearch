@@ -4,23 +4,32 @@ const handleSearch = async (event) => {
 
     const entradaTexto = document.getElementById("query");
     const shows = document.getElementById("shows");
+    const message = document.querySelector('#message');
  
+    shows.innerHTML = '';
+    message.innerHTML = 'searching...';
+
   const endpoint = `https://api.tvmaze.com/search/shows?q=${entradaTexto.value}`;
   const resposta = await fetch(endpoint); 
-
-  
-    const show = await resposta.json(); 
+  const show = await resposta.json(); 
     
-    if (!resposta.ok) {
-      const message = document.querySelector('#message');
-      message.innerHTML = "Show não encontrado.";
+    if (show.length === 0) {
+      
+    message.innerHTML = 'show not found.';
     return;
     }
-    shows.innerHTML = 
-    `<li>
-    <img class="poster" src="${show[0].show.image.medium}" />
-    <span class="show-name">${show[0].show.name}</span>
-     </li>`;
+    
+    message.innerHTML = '';
+    
+    show.forEach((entry)  => {
+      shows.insertAdjacentHTML(
+        'beforeend',
+      `<li>
+      <img class="poster" src="${entry?.show?.image?.medium || ''}" />
+      <span class="show-name">${entry?.show?.name || ''}</span>
+       </li>`);
+    });
+
 };
 
 document.addEventListener('DOMContentLoaded', () => {
