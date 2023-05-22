@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Satisfy&family=Zen+Kurenaido&display=swap');
 
 :root {
-  --color-primary: rgb(204, 203, 219);
-  --color-secondary: rgb(34, 28, 36);
-  --color-img-bg: rgb(60, 45, 65);
+  --color-primary: #F2F2F2;
+  --color-secondary: #2A3659;
+  --color-img-bg:#A65526;
 }
 
 body {
@@ -34,8 +34,8 @@ li {
 
 input,
 button {
-  background-color: var(--color-primary);
-  color: var(--color-secondary);
+  background-color: var(--color-img-bg);
+  color: var(--color-primary);
   font-family: 'Zen Kurenaido', sans-serif;
   outline: none;
 }
@@ -95,6 +95,8 @@ img {
 
 #query {
   flex: 1;
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
 }
 
 #results {
@@ -117,6 +119,7 @@ img {
 }
 
 .poster {
-  background-color: var(--color-img-bg);
+  background-color: var(--color-secondary);
   height: 177px;
 }
+
